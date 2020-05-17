@@ -1,0 +1,45 @@
+ion-header {
+
+    ion-button {
+        color: white;
+
+        ion-icon {
+            font-size: 32px;
+        }
+    }
+}
+
+.container{
+    min-width: 100%;
+}
+
+.padding-top{
+    padding-top: 20px;
+}
+
+.top {
+    width: 100%;
+    margin-top: 10px;
+    display: flex-start;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.myClass {
+    max-width: 100% !important;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    align-content: center;
+    word-wrap: break-word;
+    color: var(--ion-color-Contrast);
+    font-size: large;
+}
+
+.myLabel{
+    font-size: larger;
+}
+
+.title{
+    font-size: large;
+}

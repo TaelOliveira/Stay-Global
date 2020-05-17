@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "520074065099",
+    "firebase_url": "https://stayglobal-f74bf.firebaseio.com",
+    "project_id": "stayglobal-f74bf",
+    "storage_bucket": "stayglobal-f74bf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:520074065099:android:58a10899e038bff0b0174e",
+        "android_client_info": {
+          "package_name": "com.stayglobal.studentapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "520074065099-6s49tjsdp9mskemsd2ct3bchlqnmnf1m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhKdO0rCBDmVQL4clLSy6CeCHdsPElFhU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "520074065099-6s49tjsdp9mskemsd2ct3bchlqnmnf1m.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "520074065099-c97t6ikabiflank4eabcevhj4hkfdle8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.stayglobal.studentapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

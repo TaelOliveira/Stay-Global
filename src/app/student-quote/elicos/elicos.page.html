@@ -1,0 +1,464 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-button fill="clear" (click)="goToQuote()">
+      <ion-icon slot="start" name="close-sharp"></ion-icon>
+      <ion-title>ELICOS</ion-title>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-button (click)="this.slides.slidePrev()">
+    <ion-icon name="arrow-back"></ion-icon>
+  </ion-button>
+
+  <ion-slides pager paginationType="bullets" [options]="slideOpts" #slides="">
+
+    <!-- user details -->
+    <ion-slide class="padding-top">
+      <ion-card>
+        <ion-card-content>
+
+          <form [formGroup]="userDetailsForm" class="ion-padding">
+
+            <!-- first name  and last name-->
+            <ion-row>
+              <ion-col>
+                <div>
+                  <ion-item>
+                    <ion-label position="stacked">First Name</ion-label>
+                    <ion-input formControlName="firstName" type="text" placeholder="John" name="firstName"></ion-input>
+                  </ion-item>
+                  <div class="error-container">
+                    <ng-container *ngFor="let validation of validations.firstName">
+                      <div class="error-message"
+                        *ngIf="userDetailsForm.get('firstName').hasError(validation.type) && (userDetailsForm.get('firstName').dirty || userDetailsForm.get('firstName').touched)">
+                        <ion-icon name="information-circle-outline"></ion-icon>
+                        <span>{{ validation.message }}</span>
+                      </div>
+                    </ng-container>
+                  </div>
+                </div>
+              </ion-col>
+              <!-- last name -->
+              <ion-col>
+                <ion-item>
+                  <ion-label position="stacked">Last Name</ion-label>
+                  <ion-input formControlName="lastName" type="text" placeholder="Williams" name="lastName"></ion-input>
+                </ion-item>
+                <div class="error-container">
+                  <ng-container *ngFor="let validation of validations.lastName">
+                    <div class="error-message"
+                      *ngIf="userDetailsForm.get('lastName').hasError(validation.type) && (userDetailsForm.get('lastName').dirty || userDetailsForm.get('lastName').touched)">
+                      <ion-icon name="information-circle-outline"></ion-icon>
+                      <span>{{ validation.message }}</span>
+                    </div>
+                  </ng-container>
+                </div>
+              </ion-col>
+            </ion-row>
+
+            <!-- email -->
+            <ion-row>
+              <ion-col>
+                <ion-item>
+                  <ion-label position="stacked">Email</ion-label>
+                  <ion-input formControlName="email" type="text" placeholder="john@gmail.com" name="email"></ion-input>
+                </ion-item>
+                <div class="error-container">
+                  <ng-container *ngFor="let validation of validations.email">
+                    <div class="error-message"
+                      *ngIf="userDetailsForm.get('email').hasError(validation.type) && (userDetailsForm.get('email').dirty || userDetailsForm.get('email').touched)">
+                      <ion-icon name="information-circle-outline"></ion-icon>
+                      <span>{{ validation.message }}</span>
+                    </div>
+                  </ng-container>
+                </div>
+              </ion-col>
+            </ion-row>
+
+            <!-- phone -->
+            <ion-row>
+              <ion-col>
+                <ion-item>
+                  <ion-label position="stacked">Phone</ion-label>
+                  <ion-input formControlName="phone" type="number" placeholder="0404100200" name="phone"></ion-input>
+                </ion-item>
+                <div class="error-container">
+                  <ng-container *ngFor="let validation of validations.phone">
+                    <div class="error-message"
+                      *ngIf="userDetailsForm.get('phone').hasError(validation.type) && (userDetailsForm.get('phone').dirty || userDetailsForm.get('phone').touched)">
+                      <ion-icon name="information-circle-outline"></ion-icon>
+                      <span>{{ validation.message }}</span>
+                    </div>
+                  </ng-container>
+                </div>
+              </ion-col>
+            </ion-row>
+
+            <!-- visa expire date -->
+            <ion-row>
+              <ion-col>
+                <ion-item>
+                  <ion-label position="stacked">VISA expire date:</ion-label>
+                  <ion-datetime displayFormat="DD MMMM YYYY" min="2020-01-01" max="2023-30-12"
+                    formControlName="expireDate" name="date" placeholder="Select Date"></ion-datetime>
+                </ion-item>
+                <div class="error-container">
+                  <ng-container *ngFor="let validation of validations.expireDate">
+                    <div class="error-message"
+                      *ngIf="userDetailsForm.get('expireDate').hasError(validation.type) && (userDetailsForm.get('expireDate').dirty || userDetailsForm.get('expireDate').touched)">
+                      <ion-icon name="information-circle-outline"></ion-icon>
+                      <span>{{ validation.message }}</span>
+                    </div>
+                  </ng-container>
+                </div>
+              </ion-col>
+            </ion-row>
+
+            <div class="ion-padding-top">
+              <ion-button (click)="clearForm()" type="button" expand="block" color="danger">CLEAR FORM</ion-button>
+            </div>
+
+            <div class="ion-padding-top">
+              <ion-button [disabled]="!userDetailsForm.valid" type="button" expand="block" color="success"
+                (click)="slides.slideNext()">NEXT</ion-button>
+            </div>
+
+          </form>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+
+    <!-- school and weeks-->
+    <ion-slide class="padding-top">
+      <ion-list class="container">
+        <ion-card>
+          <ion-card-content>
+
+            <form [formGroup]="schoolForm">
+              <ion-item>
+                <ion-select class="myClass" formControlName="schoolName" placeholder="Select your school">
+                  <ion-select-option *ngFor="let school of schools">
+                    <p>{{school.name}}</p>
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <div class="ion-padding-top">
+                <ion-button [disabled]="!schoolForm.valid" type="button" expand="block" color="primary"
+                  (click)="school()">NEXT</ion-button>
+              </div>
+
+            </form>
+          </ion-card-content>
+        </ion-card>
+
+        <!-- weeks -->
+        <ion-list class="container" *ngIf="schoolSelected">
+          <ion-card>
+            <ion-card-content>
+
+              <form [formGroup]="weeksForm">
+                <ion-item>
+                  <ion-select class="myClass" formControlName="weeksNumber" placeholder="Select number of weeks">
+                    <ion-select-option *ngFor="let week of weeks">
+                      <p>{{week.number}}</p>
+                    </ion-select-option>
+                  </ion-select>
+                </ion-item>
+
+                <div class="ion-padding-top">
+                  <ion-button [disabled]="!weeksForm.valid" type="button" expand="block" color="success"
+                    (click)="[slides.slideNext(), generateQuote()]">Generate Quote</ion-button>
+                </div>
+
+              </form>
+            </ion-card-content>
+          </ion-card>
+        </ion-list>
+
+        <ion-item button (click)="seeSchoolInformation()" *ngIf="schoolInformation">
+          <ion-label color="primary">See School Information</ion-label>
+          <ion-icon name="arrow-down-sharp" slot="end"></ion-icon>
+        </ion-item>
+
+        <ion-item button (click)="seeSchoolInformation()" *ngIf="isShown">
+          <ion-label color="danger">Hide School Information</ion-label>
+          <ion-icon name="arrow-up-sharp" slot="end"></ion-icon>
+        </ion-item>
+
+        <div class="ion-text-start" *ngIf="isShown">
+          <ng-container>
+            <div *ngFor="let school of schools">
+              <ion-item>
+                <ion-list>
+                  <ion-chip color="primary">
+                    <ion-label class="title"><strong>{{school.name}}</strong></ion-label>
+                  </ion-chip>
+                  <p><a href="{{school.website}}">{{school.website}}</a></p>
+                  <p>${{school.price}}/week</p>
+                </ion-list>
+              </ion-item>
+            </div>
+          </ng-container>
+        </div>
+
+      </ion-list>
+    </ion-slide>
+
+    <!-- quote -->
+    <ion-slide>
+
+      <ion-list class="top">
+
+        <ion-img src="/assets/stayglobal.png"></ion-img>
+
+        <!-- user details -->
+        <div class="ion-padding-top ion-text-start">
+          <ion-item>
+            <ion-list>
+              <p>
+                <ion-label><strong>Date:</strong> {{getDate | date:'EEEE dd MMMM yyyy'}}</ion-label>
+              </p>
+              <p>
+                <ion-label><strong>Name:</strong> {{firstName}} {{lastName}}</ion-label>
+              </p>
+              <p>
+                <ion-label><strong>Visa Due Date:</strong> {{expireDate | date: 'dd-MM-yyyy'}}</ion-label>
+              </p>
+            </ion-list>
+          </ion-item>
+        </div>
+
+        <!-- School Information -->
+        <div class="ion-padding-top">
+          <ion-item button (click)="schoolDetails()" *ngIf="showSchoolDetails">
+            <ion-label color="primary" class="title ion-text-wrap">See School Information</ion-label>
+            <ion-icon name="arrow-down-sharp" slot="end"></ion-icon>
+          </ion-item>
+
+          <ion-item button (click)="schoolDetails()" *ngIf="hideSchoolDetails">
+            <ion-label color="danger" class="title ion-text-wrap">Hide School Details</ion-label>
+            <ion-icon name="arrow-up-sharp" slot="end"></ion-icon>
+          </ion-item>
+
+          <div class="ion-text-start" *ngIf="hideSchoolDetails">
+            <ng-container>
+              <ion-item>
+                <ion-list>
+                  <p>
+                    <ion-label><strong>Institution name: </strong></ion-label>{{selectedSchool.name}}
+                  </p>
+                  <p>
+                    <ion-label><strong>Website: </strong></ion-label><a
+                      href="{{selectedSchool.website}}">{{selectedSchool.website}}</a>
+                  </p>
+                  <p>
+                    <ion-label><strong>Course: </strong></ion-label>English
+                  </p>
+                  <p>
+                    <ion-label><strong>Period of Studies: </strong></ion-label>{{weeksNumber}} weeks
+                  </p>
+                  <p>
+                    <ion-label><strong>Price: </strong></ion-label>${{selectedSchool.price}}/week
+                  </p>
+                  <p>
+                    <ion-label><strong>Start Date: </strong></ion-label>{{selectedSchool.start_date}}
+                  </p>
+                  <ion-label class="myLabel" color="warning"><strong>Total:
+                      ${{weeksNumber * selectedSchool.price}}</strong></ion-label>
+                </ion-list>
+              </ion-item>
+            </ng-container>
+          </div>
+        </div>
+
+        <!-- School Fees -->
+        <div class="ion-padding-top">
+          <ion-item button (click)="schoolFees()" *ngIf="showSchoolFees">
+            <ion-label color="primary" class="title ion-text-wrap">See School Fees</ion-label>
+            <ion-icon name="arrow-down-sharp" slot="end"></ion-icon>
+          </ion-item>
+
+          <ion-item button (click)="schoolFees()" *ngIf="hideSchoolFees">
+            <ion-label color="danger" class="title ion-text-wrap">Hide School Fees</ion-label>
+            <ion-icon name="arrow-up-sharp" slot="end"></ion-icon>
+          </ion-item>
+
+          <div class="ion-text-start" *ngIf="hideSchoolFees">
+            <ng-container>
+              <ion-item>
+                <ion-list>
+                  <p>
+                    <ion-label><strong>Tuition Fee: </strong></ion-label>${{selectedSchool.tuition_fee}}
+                  </p>
+                  <p>
+                    <ion-label><strong>Enrolment Fee: </strong></ion-label>${{selectedSchool.enrolment_fee}}
+                  </p>
+                  <p>
+                    <ion-label><strong>Material Fee: </strong></ion-label>${{selectedSchool.material_fee}}
+                  </p>
+                  <ion-label class="myLabel" color="warning"><strong>Total:
+                      ${{selectedSchool.tuition_fee + selectedSchool.enrolment_fee + selectedSchool.material_fee}}</strong>
+                  </ion-label>
+                </ion-list>
+              </ion-item>
+            </ng-container>
+          </div>
+        </div>
+
+        <!-- OSHC -->
+        <div class="ion-padding-top">
+          <ion-item button (click)="studentHealthCover()" *ngIf="showStudentHealthCover">
+            <ion-label color="primary" class="title ion-text-wrap">See Compulsory OSHC (Overseas Student Health Cover)
+            </ion-label>
+            <ion-icon name="arrow-down-sharp" slot="end"></ion-icon>
+          </ion-item>
+
+          <ion-item button (click)="studentHealthCover()" *ngIf="hideStudentHealthCover">
+            <ion-label color="danger" class="title ion-text-wrap">Hide Compulsory OSHC (Overseas Student Health Cover)
+            </ion-label>
+            <ion-icon name="arrow-up-sharp" slot="end"></ion-icon>
+          </ion-item>
+
+          <div class="ion-text-start" *ngIf="hideStudentHealthCover">
+            <ng-container>
+              <ion-item>
+                <ion-list>
+                  <p class="ion-text-wrap">
+                    <ion-label><strong>Visa duration: </strong></ion-label>{{visaDuration}} months
+                    ({{startDate | date: 'dd-MM-yyyy'}} to
+                    {{endDate | date: 'dd-MM-yyyy'}})
+                  </p>
+                  <p>
+                    <ion-label><strong>Provider: </strong></ion-label>NIB
+                  </p>
+                  <p>
+                    <ion-label><strong>Price: </strong></ion-label>${{studentHealthPrice}}/month
+                  </p>
+                  <ion-label class="myLabel" color="warning"><strong>Total: ${{totalStudentHealth}}</strong></ion-label>
+                </ion-list>
+              </ion-item>
+            </ng-container>
+          </div>
+        </div>
+
+        <!-- Immigration -->
+        <div class="ion-padding-top">
+          <ion-item button (click)="immi()" *ngIf="showImmi">
+            <ion-label color="primary" class="title ion-text-wrap">See Department of Immigration and Border Protection
+              (DIBP)
+            </ion-label>
+            <ion-icon name="arrow-down-sharp" slot="end"></ion-icon>
+          </ion-item>
+
+          <ion-item button (click)="immi()" *ngIf="hideImmi">
+            <ion-label color="danger" class="title ion-text-wrap">Hide Department of Immigration and Border Protection
+              (DIBP)
+            </ion-label>
+            <ion-icon name="arrow-up-sharp" slot="end"></ion-icon>
+          </ion-item>
+
+          <div class="ion-text-start" *ngIf="hideImmi">
+            <ng-container>
+              <ion-item>
+                <ion-list>
+                  <p>
+                    <ion-label><strong>Immigration Fee: </strong></ion-label>${{immigrationFee}}
+                  </p>
+                  <p>
+                    <ion-label><strong>Credit Card Fee: </strong></ion-label>${{immigrationFee * creditCardFee}}
+                  </p>
+                  <ion-label class="myLabel" color="warning"><strong>Total:
+                      ${{immigrationFee + (immigrationFee * creditCardFee)}}</strong></ion-label>
+                </ion-list>
+              </ion-item>
+            </ng-container>
+          </div>
+        </div>
+
+        <!-- Health Examination -->
+        <div class="ion-padding-top">
+          <ion-item button (click)="healthExams()" *ngIf="showHealthExams">
+            <ion-label color="primary" class="title ion-text-wrap">See Compulsory Health Examination</ion-label>
+            <ion-icon name="arrow-down-sharp" slot="end"></ion-icon>
+          </ion-item>
+
+          <ion-item button (click)="healthExams()" *ngIf="hideHealthExams">
+            <ion-label color="danger" class="title ion-text-wrap">Hide Compulsory Health Examination</ion-label>
+            <ion-icon name="arrow-up-sharp" slot="end"></ion-icon>
+          </ion-item>
+
+          <div class="ion-text-start" *ngIf="hideHealthExams">
+            <ng-container>
+              <ion-item>
+                <ion-list>
+                  <p>
+                    <ion-label><strong>Medical Exams and X-rays: </strong></ion-label>${{healthExamination}}
+                  </p>
+                  <ion-label class="myLabel" color="warning"><strong>Total: ${{healthExamination}}</strong></ion-label>
+                </ion-list>
+              </ion-item>
+            </ng-container>
+          </div>
+        </div>
+
+        <!-- Total to be Paid -->
+        <div class="ion-padding-top">
+          <ion-item button (click)="total()" *ngIf="showTotal">
+            <ion-label color="primary" class="title ion-text-wrap">See Total to be Paid</ion-label>
+            <ion-icon name="arrow-down-sharp" slot="end"></ion-icon>
+          </ion-item>
+
+          <ion-item button (click)="total()" *ngIf="hideTotal">
+            <ion-label color="danger" class="title ion-text-wrap">Hide Total to be Paid</ion-label>
+            <ion-icon name="arrow-up-sharp" slot="end"></ion-icon>
+          </ion-item>
+
+          <div class="ion-text-start" *ngIf="hideTotal">
+            <ng-container>
+              <ion-item>
+                <ion-list>
+                  <p>
+                    <ion-label><strong>School Fees: </strong></ion-label>
+                    ${{ 12 * selectedSchool.price + 
+                      selectedSchool.tuition_fee + 
+                      selectedSchool.enrolment_fee + 
+                      selectedSchool.material_fee}} (First 12 weeks and enrolment fees)
+                  </p>
+                  <p>
+                    <ion-label><strong>Compulsory OSHC: </strong></ion-label>${{totalStudentHealth}}
+                  </p>
+                  <p>
+                    <ion-label><strong>Immigration: </strong></ion-label>
+                    ${{immigrationFee + (immigrationFee * creditCardFee)}}
+                  </p>
+                  <p>
+                    <ion-label><strong>Health Examination: </strong></ion-label>${{healthExamination}}
+                  </p>
+                  <ion-label class="myLabel" color="warning"><strong>Total Fees to be Paid:
+                      ${{ 12 * selectedSchool.price + 
+                        (selectedSchool.tuition_fee + selectedSchool.enrolment_fee + selectedSchool.material_fee) + 
+                        totalStudentHealth + 
+                        immigrationFee + (immigrationFee * creditCardFee) + 
+                        healthExamination | number:'1.2-2'}}</strong>
+                  </ion-label>
+                  <br>
+                  <ion-label class="ion-text-wrap">
+                    <strong>*The remaining amount will be paid every 12 weeks, directly to your school.</strong>
+                  </ion-label>
+                </ion-list>
+              </ion-item>
+            </ng-container>
+          </div>
+        </div>
+
+      </ion-list>
+
+    </ion-slide>
+
+  </ion-slides>
+
+</ion-content>

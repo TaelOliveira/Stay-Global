@@ -1,3 +1,27 @@
-<ion-app>
-  <ion-router-outlet></ion-router-outlet>
-</ion-app>
+<ion-tabs>
+
+  <ion-tab-bar #myTabBar id=“myTabBar” slot="bottom">
+
+    <ion-tab-button tab="home">
+      <ion-icon name="home-sharp"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="visa">
+      <ion-icon name="information-circle-sharp"></ion-icon>
+      <ion-label>Visa Information</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="contact">
+      <ion-icon name="call-sharp"></ion-icon>
+      <ion-label>Contact</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="student-quote">
+      <ion-icon name="calculator-sharp"></ion-icon>
+      <ion-label>Student Quote</ion-label>
+    </ion-tab-button>
+
+  </ion-tab-bar>
+
+</ion-tabs>

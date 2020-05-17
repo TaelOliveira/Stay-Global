@@ -1,0 +1,154 @@
+<ion-content class="ion-padding">
+
+  <ion-list>
+    <ion-item>
+      <ion-icon class="myIcon" name="call-sharp" slot="start"></ion-icon>
+      <ion-label class="title"><strong>Call us on</strong></ion-label>
+    </ion-item>
+    <p class="text">+61 2 8668-5213</p>
+
+    <ion-item>
+      <ion-icon class="myIcon" name="location-sharp" slot="start"></ion-icon>
+      <ion-label class="title"><strong>Address</strong></ion-label>
+    </ion-item>
+    <p class="text">Sydney City - Head Office
+      Level 5, 225 Clarence Street, Sydney, NSW, 2000</p>
+
+    <ion-item>
+      <ion-icon class="myIcon" name="mail-sharp" slot="start"></ion-icon>
+      <ion-label class="title"><strong>General Information</strong></ion-label>
+    </ion-item>
+    <p class="text"><a href="mailto:info@stayglobal.com.au">info@stayglobal.com.au</a></p>
+
+    <ion-item>
+      <ion-icon class="myIcon" name="time-sharp" slot="start"></ion-icon>
+      <ion-label class="title"><strong>Opening Hours</strong></ion-label>
+    </ion-item>
+    <p class="text">Monday - Friday 10:00 am - 6:00 pm</p>
+
+  </ion-list>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">
+        <ion-label class="title"><strong>Send us a Message</strong></ion-label>
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <form [formGroup]="contactForm" class="ion-padding">
+
+        <!-- first name -->
+        <ion-row>
+          <ion-col>
+            <div>
+              <ion-item>
+                <ion-label position="stacked">First Name</ion-label>
+                <ion-input formControlName="firstName" type="text" placeholder="John" name="firstName"></ion-input>
+              </ion-item>
+              <div class="error-container">
+                <ng-container *ngFor="let validation of validations.firstName">
+                  <div class="error-message"
+                    *ngIf="contactForm.get('firstName').hasError(validation.type) && (contactForm.get('firstName').dirty || contactForm.get('firstName').touched)">
+                    <ion-icon name="information-circle-outline"></ion-icon>
+                    <span>{{ validation.message }}</span>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <!-- last name -->
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label position="stacked">Last Name</ion-label>
+              <ion-input formControlName="lastName" type="text" placeholder="Williams" name="lastName"></ion-input>
+            </ion-item>
+            <div class="error-container">
+              <ng-container *ngFor="let validation of validations.lastName">
+                <div class="error-message"
+                  *ngIf="contactForm.get('lastName').hasError(validation.type) && (contactForm.get('lastName').dirty || contactForm.get('lastName').touched)">
+                  <ion-icon name="information-circle-outline"></ion-icon>
+                  <span>{{ validation.message }}</span>
+                </div>
+              </ng-container>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <!-- email -->
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label position="stacked">Email</ion-label>
+              <ion-input formControlName="email" type="text" placeholder="john@gmail.com" name="email"></ion-input>
+            </ion-item>
+            <div class="error-container">
+              <ng-container *ngFor="let validation of validations.email">
+                <div class="error-message"
+                  *ngIf="contactForm.get('email').hasError(validation.type) && (contactForm.get('email').dirty || contactForm.get('email').touched)">
+                  <ion-icon name="information-circle-outline"></ion-icon>
+                  <span>{{ validation.message }}</span>
+                </div>
+              </ng-container>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <!-- phone -->
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label position="stacked">Phone</ion-label>
+              <ion-input formControlName="phone" type="number" placeholder="0404100200" name="phone"></ion-input>
+            </ion-item>
+            <div class="error-container">
+              <ng-container *ngFor="let validation of validations.phone">
+                <div class="error-message"
+                  *ngIf="contactForm.get('phone').hasError(validation.type) && (contactForm.get('phone').dirty || contactForm.get('phone').touched)">
+                  <ion-icon name="information-circle-outline"></ion-icon>
+                  <span>{{ validation.message }}</span>
+                </div>
+              </ng-container>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <!-- message -->
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-textarea (keyup)="onKeyUp($event)" rows="10" type="text" formControlName="message"
+                placeholder="Type your message here..."></ion-textarea>
+            </ion-item>
+            <div class="error-container">
+              <ng-container *ngFor="let validation of validations.message">
+                <div class="error-message"
+                  *ngIf="contactForm.get('message').hasError(validation.message) && (contactForm.get('message').dirty || contactForm.get('message').touched)">
+                  <ion-icon name="information-circle-outline"></ion-icon>
+                  <span>{{ validation.message }}</span>
+                </div>
+              </ng-container>
+            </div>
+            <span><em>{{500 - numberOfCharacters}} characters left</em></span>
+          </ion-col>
+        </ion-row>
+
+        <!-- button -->
+        <ion-row>
+          <ion-col>
+            <div class="ion-padding-top">
+              <ion-button [disabled]="contactForm.invalid" type="button" expand="block" color="primary"
+                (click)="[submit(), sendMessage()]">Submit</ion-button>
+            </div>
+          </ion-col>
+        </ion-row>
+
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
