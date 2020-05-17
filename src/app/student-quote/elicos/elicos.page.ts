@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { IonSlides } from '@ionic/angular';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-elicos',
@@ -41,7 +42,6 @@ export class ElicosPage implements OnInit {
   showTotal = true;
   hideTotal = false;
   selectedSchool;
-  startDate;
   visaDuration;
   endDate;
   studentHealthPrice = 40;
@@ -50,6 +50,12 @@ export class ElicosPage implements OnInit {
   creditCardFee = 0.014;
   healthExamination = 322.79;
   getDate = new Date();
+  elicosStartDate;
+  minDate;
+  maxDate;
+  startStudies;
+  finishStudies;
+  startDate;
 
   validations = {
     'firstName': [
@@ -81,32 +87,42 @@ export class ElicosPage implements OnInit {
 
   International_House = {
     name: "International House",
-    price: 300,
+    price: 270,
     website: "https://ihsydney.com.au/",
-    start_date: "10-05-2020",
-    tuition_fee: 100,
-    enrolment_fee: 100,
-    material_fee: 100,
+    tuition_fee: 0,
+    enrolment_fee: 240,
+    material_fee: 150,
+    address: "Sydney City: Level 1, 203 Clarence Street, Sydney, NSW 2000",
+    email: "enrol@ihsydney.com.au",
+    timetable: "MORNING: Monday to Friday 8:00am - 12:15pm" +
+      " AFTERNOON: Monday to Friday 5:00pm – 9:15pm"
   }
 
   ELSIS = {
     name: "ELSIS",
-    price: 180,
+    price: 255,
     website: "https://www.elsis.edu.au/",
-    start_date: "10-05-2020",
-    tuition_fee: 100,
-    enrolment_fee: 100,
-    material_fee: 100,
+    tuition_fee: 0,
+    enrolment_fee: 200,
+    material_fee: 60,
+    address: "Level 2, 545 Kent St., Sydney, NSW 2020, , Phone: +61 2 8766 3500",
+    email: "info@elsis.edu.au",
+    timetable: "MORNING: Monday to Friday 8:15am - 12:30pm" +
+      " AFTERNOON: Monday to Friday 5:10pm – 9:30pm"
   }
 
   SCOTS = {
     name: "SCOTS",
     price: 220,
     website: "https://www.scotsenglish.edu.au/",
-    start_date: "10-05-2020",
-    tuition_fee: 100,
-    enrolment_fee: 100,
-    material_fee: 100,
+    tuition_fee: 0,
+    enrolment_fee: 200,
+    material_fee: 160,
+    address: "Head Office and Sydney CBD Campus: Level 5, 127 Liverpool Street, Sydney NSW 2000, Phone: +61 2 9146 6358",
+    email: "info@scotsenglish.edu.au",
+    timetable: "MORNING: Monday to Friday 8:00am - 12:30pm" +
+      " AFTERNOON: Monday to Friday 1:00pm – 5:30pm" +
+      " EVENING: Monday to Friday 5:45pm – 10:00pm"
   }
 
   schools = [this.International_House, this.ELSIS, this.SCOTS];
@@ -146,6 +162,7 @@ export class ElicosPage implements OnInit {
 
     this.weeksForm = this.formBuilder.group({
       weeksNumber: ['', Validators.required],
+      elicosStartDate: ['', Validators.required],
     });
   }
 
@@ -171,6 +188,28 @@ export class ElicosPage implements OnInit {
     await alert.present();
   }
 
+  formatDate(date) {
+    let d = new Date(date),
+      day = '' + d.getDate(),
+      month = '' + (d.getMonth() + 1),
+      year = d.getFullYear();
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+    return [year, month, day].join('-');
+  }
+
+  getMaxAndMin() {
+    var expireDate = this.userDetailsForm.value['expireDate'].split('T')[0];
+    var date = moment(expireDate).toDate();
+    console.log("Min date", expireDate);
+    this.minDate = expireDate;
+
+    var maxDate = new Date(date.getFullYear(), date.getMonth() + 2, date.getDate());
+    var date = new Date(maxDate);
+    this.maxDate = this.formatDate(date);
+    console.log("Max date", this.maxDate);
+  }
+
   getValuesFromForm() {
     this.firstName = this.userDetailsForm.value['firstName'];
     this.lastName = this.userDetailsForm.value['lastName'];
@@ -181,6 +220,7 @@ export class ElicosPage implements OnInit {
     this.schoolName = this.schoolForm.value['schoolName'];
 
     this.weeksNumber = this.weeksForm.value['weeksNumber'];
+    this.elicosStartDate = this.weeksForm.value['elicosStartDate'];
 
     this.getSelectedSchool();
     this.getDates();
@@ -188,6 +228,11 @@ export class ElicosPage implements OnInit {
 
   clearForm() {
     this.userDetailsForm.reset();
+    this.schoolForm.reset();
+    this.weeksForm.reset();
+  }
+
+  clearSchoolAndWeekForms() {
     this.schoolForm.reset();
     this.weeksForm.reset();
   }
@@ -203,17 +248,24 @@ export class ElicosPage implements OnInit {
   }
 
   getDates() {
-    var userVisaExpire = new Date(this.expireDate);
-    var start = userVisaExpire.setDate(userVisaExpire.getDate() + 1);
+    var startStudies = this.weeksForm.value['elicosStartDate'].split('T')[0];
+    var dateStart = moment(startStudies).toDate();
+    console.log("Start studies:", dateStart)
+
+    var fisnishStudies = new Date(dateStart);
+    this.finishStudies = fisnishStudies.setDate(fisnishStudies.getDate() + (this.weeksNumber * 7));
+    console.log("Finish Studies:", this.finishStudies);
+
+    var startNewVisa = new Date(this.expireDate);
+    var start = startNewVisa.setDate(startNewVisa.getDate() + 1);
+    var startDate = start;
     this.startDate = start;
+    console.log("Start Visa:", startDate);
 
-    var expireVisa = new Date(start);
-    this.endDate = expireVisa.setDate(expireVisa.getDate() + (this.weeksNumber * 7) + 30);
+    const end = new Date(this.finishStudies);
+    this.endDate = end.setDate(end.getDate() + 30);
 
-    const end = new Date();
-    this.endDate = end.setDate(end.getDate() + 30 + (this.weeksNumber * 7));
-
-    var date1 = new Date(this.startDate);//Remember, months are 0 based in JS
+    var date1 = new Date(startDate);//Remember, months are 0 based in JS
     var date2 = new Date(this.endDate);
     var year1 = date1.getFullYear();
     var year2 = date2.getFullYear();
