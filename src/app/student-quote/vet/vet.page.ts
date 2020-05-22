@@ -52,6 +52,8 @@ export class VetPage implements OnInit {
   selectedCourse;
   course = false;
   getDate = new Date();
+  coursePrice;
+  courseTerms;
 
   validations = {
     'firstName': [
@@ -75,43 +77,58 @@ export class VetPage implements OnInit {
 
   Pacific = {
     name: "Pacific Training Group",
-    price: 1200,
     website: "https://pacifictraining.edu.au/",
-    start_date: "10-05-2020",
-    tuition_fee: 100,
-    enrolment_fee: 100,
-    material_fee: 100,
+    email: "sydney@pacifictraining.edu.au",
+    address: "Ground Floor, 208 Clarence Street, Sydney, NSW 2000, +61 (2) 9265 7080",
+    tuition_fee: 0,
+    enrolment_fee: 200,
+    material_fee: 0,
+    startDate: "Jan, Apr, Jul, Sep",
     courses: [
-      { name: 'Adavanced Diploma in Business', duration: 24 },
-      { name: 'IT', duration: 36 },
+      { name: 'Certificado III in Hospitality', terms: 3, duration: 9, price: 1600, timetable: "Mon-Sat: 8:30am-4:00pm / Mon-Thu: 5:00pm-8:45pm" },
+      { name: 'Diploma of Hospitality Management', terms: 6, duration: 18, price: 1600, timetable: "Mon-Sat: 8:30am-4:00pm / Mon-Thu: 5:00pm-8:45pm" },
+      { name: 'Certificado IV in Leadership and Management', terms: 4, duration: 12, price: 1500, timetable: "Fri-Sat: 8:30am-4:00pm / Mon-Thu: 5:00pm-8:45pm" },
+      { name: 'Diploma of Social Media Marketing', terms: 4, duration: 12, price: 1500, timetable: "Mon-Tue: 8:30am-4:00pm" },
+      { name: 'Advanced Diploma of Marketing and Communication', terms: 7, duration: 21, price: 1500, timetable: "Mon-Tue: 8:30am-4:00pm" },
+      { name: 'Certificate III in Events', terms: 3, duration: 9, price: 1500, timetable: "Wed-Sat: 8:30am-4:00pm" },
+      { name: 'Diploma of Events Management', terms: 5, duration: 15, price: 1500, timetable: "Mon-Sat: 8:30am-4:00pm / Mon-Thu: 5:00pm-8:45pm" },
     ],
   }
 
   ACBI = {
     name: "ACBI",
-    price: 1100,
     website: "https://www.acbi.edu.au/",
-    start_date: "10-05-2020",
-    tuition_fee: 100,
+    email: "admissions@acbi.edu.au",
+    address: "Suite 510, 451 Pitt Street Haymarket Sydney, NSW 2000, +61 (2) 9071 9803",
+    tuition_fee: 0,
     enrolment_fee: 100,
-    material_fee: 100,
+    material_fee: 150,
+    startDate: "Jan, Feb, Apr, May, Jul, Aug, Oct, Nov",
     courses: [
-      { name: 'IT', duration: 36 },
-      { name: 'ChildCare', duration: 36 }
+      { name: 'Certificado IV in Marketing & Communication', terms: 2, duration: 7, price: 1200, timetable: "Mon-Tue: 8:30am-4:15pm" },
+      { name: 'Diploma of Graphic Design', terms: 6, duration: 18, price: 1500, timetable: "Mon-Tue: 8:30am-4:15pm / Wed - Thu: 8:30am-4:15pm" },
+      { name: 'Diploma of Project Management', terms: 4, duration: 12, price: 1200, timetable: "Wed: 4:30pm-9:15pm / Saturday: 9:00am - 5pm" },
+      { name: 'Diploma of International Business', terms: 4, duration: 12, price: 1200, timetable: "Mon-Tue: 8:30am-4:15pm" },
+      { name: 'Diploma of Digital Media Technologies', terms: 6, duration: 18, price: 1200, timetable: "Mon-Tue: 8:30am-4:15pm / Tue-Wed-Thu: 4:30pm-9:15pm" },
+      { name: 'Advanced Diploma of Network Security', terms: 8, duration: 24, price: 1450, timetable: "Mon-Tue-Wed: 4:30pm-9:15pm" },
+      { name: 'Diploma of Enterprise Resource Planning', terms: 4, duration: 12, price: 1200, timetable: "Mon-Wed: 4:30pm-9:15pm" },
     ],
   }
 
   International_House = {
     name: "International House",
-    price: 1300,
     website: "https://ihsydney.com.au/",
-    start_date: "10-05-2020",
-    tuition_fee: 100,
-    enrolment_fee: 100,
-    material_fee: 100,
+    email: "enrol@ihsydney.com.au",
+    address: "Sydney City: Level 1, 203 Clarence Street, Sydney, NSW 2000, +61 (2) 9279 0733",
+    tuition_fee: 0,
+    enrolment_fee: 200,
+    material_fee: 0,
+    startDate: "Jan, Mar, Jul, Sep, Nov",
     courses: [
-      { name: 'Business', duration: 36 },
-      { name: 'Marketing', duration: 36 }
+      { name: 'Certificate III in Business', terms: 3, duration: 6, price: 1100, timetable: "Mon-Fri: 8:00am-6:00pm" },
+      { name: 'Certificate IV in Marketing and Communication', terms: 6, duration: 12, price: 1000, timetable: "Mon-Fri: 8:00am-6:00pm" },
+      { name: 'Diploma of International Business', terms: 6, duration: 12, price: 1000, timetable: "Mon-Fri: 8:00am-6:00pm" },
+      { name: 'Diploma of Social Media Marketing', terms: 6, duration: 12, price: 1200, timetable: "Mon-Fri: 8:00am-6:00pm" },
     ],
   }
 
@@ -197,6 +214,8 @@ export class VetPage implements OnInit {
     let course = this.selectedCourse;
     this.courseName = course.name;
     this.duration = course.duration;
+    this.coursePrice = course.price;
+    this.courseTerms = course.terms;
     console.log(this.courseName, this.duration);
     this.course = true;
   }
@@ -215,7 +234,7 @@ export class VetPage implements OnInit {
     this.startDate = start;
 
     var expireVisa = new Date(start);
-    this.endDate = expireVisa.setMonth(expireVisa.getMonth() + this.duration);
+    this.endDate = expireVisa.setMonth(expireVisa.getMonth() + 1 + this.duration);
 
     this.totalStudentHealth = this.duration * this.studentHealthPrice;
   }

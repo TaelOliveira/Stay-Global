@@ -92,7 +92,7 @@ export class ElicosPage implements OnInit {
     tuition_fee: 0,
     enrolment_fee: 240,
     material_fee: 150,
-    address: "Sydney City: Level 1, 203 Clarence Street, Sydney, NSW 2000",
+    address: "Sydney City: Level 1, 203 Clarence Street, Sydney, NSW 2000, +61 (2) 9279 0733",
     email: "enrol@ihsydney.com.au",
     timetable: "MORNING: Monday to Friday 8:00am - 12:15pm" +
       " AFTERNOON: Monday to Friday 5:00pm – 9:15pm"
@@ -105,7 +105,7 @@ export class ElicosPage implements OnInit {
     tuition_fee: 0,
     enrolment_fee: 200,
     material_fee: 60,
-    address: "Level 2, 545 Kent St., Sydney, NSW 2020, , Phone: +61 2 8766 3500",
+    address: "Level 2, 545 Kent St., Sydney, NSW 2020, , Phone: +61 (2) 8766 3500",
     email: "info@elsis.edu.au",
     timetable: "MORNING: Monday to Friday 8:15am - 12:30pm" +
       " AFTERNOON: Monday to Friday 5:10pm – 9:30pm"
@@ -118,7 +118,7 @@ export class ElicosPage implements OnInit {
     tuition_fee: 0,
     enrolment_fee: 200,
     material_fee: 160,
-    address: "Head Office and Sydney CBD Campus: Level 5, 127 Liverpool Street, Sydney NSW 2000, Phone: +61 2 9146 6358",
+    address: "Head Office and Sydney CBD Campus: Level 5, 127 Liverpool Street, Sydney NSW 2000, Phone: +61 (2) 9146 6358",
     email: "info@scotsenglish.edu.au",
     timetable: "MORNING: Monday to Friday 8:00am - 12:30pm" +
       " AFTERNOON: Monday to Friday 1:00pm – 5:30pm" +

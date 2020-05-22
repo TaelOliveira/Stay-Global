@@ -299,7 +299,7 @@
                   <p>
                     <ion-label><strong>Price: </strong></ion-label>${{selectedSchool.price}}/week
                   </p>
-                  <ion-label class="myLabel" color="warning"><strong>Total:
+                  <ion-label class="myLabel"><strong>Total:
                       ${{weeksNumber * selectedSchool.price}}</strong></ion-label>
                 </ion-list>
               </ion-item>
@@ -332,7 +332,7 @@
                   <p>
                     <ion-label><strong>Material Fee: </strong></ion-label>${{selectedSchool.material_fee}}
                   </p>
-                  <ion-label class="myLabel" color="warning"><strong>Total:
+                  <ion-label class="myLabel"><strong>Total:
                       ${{selectedSchool.tuition_fee + selectedSchool.enrolment_fee + selectedSchool.material_fee}}</strong>
                   </ion-label>
                 </ion-list>
@@ -369,7 +369,7 @@
                   <p>
                     <ion-label><strong>Price: </strong></ion-label>${{studentHealthPrice}}/month
                   </p>
-                  <ion-label class="myLabel" color="warning"><strong>Total: ${{totalStudentHealth}}</strong></ion-label>
+                  <ion-label class="myLabel"><strong>Total: ${{totalStudentHealth}}</strong></ion-label>
                 </ion-list>
               </ion-item>
             </ng-container>
@@ -402,7 +402,7 @@
                   <p>
                     <ion-label><strong>Credit Card Fee: </strong></ion-label>${{immigrationFee * creditCardFee}}
                   </p>
-                  <ion-label class="myLabel" color="warning"><strong>Total:
+                  <ion-label class="myLabel"><strong>Total:
                       ${{immigrationFee + (immigrationFee * creditCardFee)}}</strong></ion-label>
                 </ion-list>
               </ion-item>
@@ -429,7 +429,7 @@
                   <p>
                     <ion-label><strong>Medical Exams and X-rays: </strong></ion-label>${{healthExamination}}
                   </p>
-                  <ion-label class="myLabel" color="warning"><strong>Total: ${{healthExamination}}</strong></ion-label>
+                  <ion-label class="myLabel"><strong>Total: ${{healthExamination}}</strong></ion-label>
                 </ion-list>
               </ion-item>
             </ng-container>
@@ -469,7 +469,7 @@
                   <p>
                     <ion-label><strong>Health Examination: </strong></ion-label>${{healthExamination}}
                   </p>
-                  <ion-label class="myLabel" color="warning"><strong>Total Fees to be Paid:
+                  <ion-label class="myLabel"><strong>Total Fees to be Paid:
                       ${{ 12 * selectedSchool.price + 
                         (selectedSchool.tuition_fee + selectedSchool.enrolment_fee + selectedSchool.material_fee) + 
                         totalStudentHealth + 

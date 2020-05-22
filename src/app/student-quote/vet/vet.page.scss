@@ -9,11 +9,17 @@ ion-header {
     }
 }
 
-.container{
+ion-content {
+    ion-slides {
+        height: auto;
+    }
+}
+
+.container {
     min-width: 100%;
 }
 
-.padding-top{
+.padding-top {
     padding-top: 20px;
 }
 
@@ -36,10 +42,15 @@ ion-header {
     font-size: large;
 }
 
-.myLabel{
+.myLabel {
     font-size: larger;
+    color: green;
 }
 
-.title{
+.title {
     font-size: large;
+}
+
+.text {
+    white-space: pre-line;
 }
