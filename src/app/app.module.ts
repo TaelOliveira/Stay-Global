@@ -14,12 +14,22 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
+import { Question1Component } from './visa/question1/question1.component';
+import { Question2Component } from './visa/question2/question2.component';
+import { Question3Component } from './visa/question3/question3.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    Question1Component,
+    Question2Component,
+    Question3Component,
   ],
-  entryComponents: [],
+  entryComponents: [
+    Question1Component,
+    Question2Component,
+    Question3Component,
+  ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
