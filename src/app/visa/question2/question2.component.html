@@ -7,6 +7,253 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  2
+<ion-content class="ion-padding" [scrollEvents]="true" #content>
+
+  <p>
+    In this page you will find information about the following topics:
+  </p>
+
+  <ion-list>
+    <ion-item lines="none" (click)="scrollTo('topic1')">
+      <ion-icon class="iconTopics" name="information-circle-sharp" slot="start"></ion-icon>
+      <ion-label class="myLabel">Why Australia?</ion-label>
+    </ion-item>
+    <ion-item lines="none" (click)="scrollTo('topic2')">
+      <ion-icon class="iconTopics" name="information-circle-sharp" slot="start"></ion-icon>
+      <ion-label class="myLabel">Where to live in Australia?</ion-label>
+    </ion-item>
+    <ion-item lines="none" (click)="scrollTo('topic3')">
+      <ion-icon class="iconTopics" name="information-circle-sharp" slot="start"></ion-icon>
+      <ion-label class="myLabel">What is the cost of living?</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <h2>I want to know more about living in Australia.</h2>
+
+  <p>
+    If you are thinking of living in Australia, there is a lot to decide. But don't worry, we are here to help you.
+  </p>
+
+  <h3 class="topic" id="topic1">Why Australia?</h3>
+
+  <h4 class="subtitle">Study at globally ranked institutions</h4>
+
+  <p>
+    Australia offers a diverse range of study options for international students, such as English courses, vocational
+    education and training (VET) and technical and higher education (TAFE), as well as undergraduate (bachelor's) and
+    postgraduate programs. It will certainly be a differential to have an international course in one of the ranked
+    schools in your curriculum.
+  </p>
+
+  <h4 class="subtitle">Study and work</h4>
+
+  <p>
+    When you have a student visa, you are allowing to work 40 hours per fortnight (fortnight means 14 days starting on a
+    Monday) and more than 40 hours on your vacation. Most students pay their expenses (accommodation and food) by
+    working here. Often, they also make extra money to travel around Asia and Australia. Australia is full of job
+    opportunities in several areas.
+  </p>
+
+  <h4 class="subtitle">Amazing experience</h4>
+
+  <p>
+    You will expand your experience here and have more time to discover beautiful beaches and places, travel and have
+    fun with your friends. At the same time, studying and developing your career
+  </p>
+
+  <h3 class="topic" id="topic2">Where to live in Australia?</h3>
+
+  <p>
+    Choosing where to live when moving to a new country is an important decision. There are some factors that you need
+    to take into account, such as: schools. types of courses, ease of finding jobs and lifestyle. We have compiled this
+    information for you with some of the best places to live in Australia to help you make an informed decision.
+  </p>
+
+  <h4 class="subtitle">Sydney</h4>
+
+  <p>
+    Sydney is the state capital of New South Wales and the largest city in population in Australia.
+    Sydney has an amazing looking harbour where you can find many world-class restaurants with the perfect addition of
+    the Sydney Opera House and the Harbour bridge. Moreover, Sydney offers beautiful beaches and coastal walks that are
+    perfect for everyone to enjoy.
+  </p>
+
+  <p>
+    <li>State: New South Wales</li>
+    <li>Weather: 24 °C</li>
+    <li>Population: 5.23 million</li>
+    <li>Average living costs AUD400-500 per week</li>
+    <li>Employability: High</li>
+    <li>The number of schools: many possibilities and good prices.</li>
+    <li>Variety of courses: high</li>
+    <li>Lifestyle: multicultural, stunning landscapes, active cultural life, haute cuisine, several options of pubs, and
+      restaurants.</li>
+  </p>
+
+  <h4 class="subtitle">Melbourne</h4>
+
+  <p>
+    Melbourne is the capital of the state of Victoria, the second largest population city in Australia. Melbourne's
+    amazing cultural assets make the city the cultural capital of Australia. Melbourne's trademarks are music, art and
+    amazing museums.
+  </p>
+
+  <p>
+    <li>State: Victoria</li>
+    <li>Weather: 21 °C</li>
+    <li>Population: 4.936 million</li>
+    <li>Average living costs AUD400-550 per week</li>
+    <li>Employability: High</li>
+    <li>The number of schools: many possibilities and good prices.</li>
+    <li>Variety of courses: high</li>
+    <li>Lifestyle: stunning landscapes, active cultural life, haute cuisine, several options of pubs and restaurants.
+    </li>
+  </p>
+
+  <h4 class="subtitle">Brisbane</h4>
+
+  <p>
+    Brisbane is the capital of the state of Queensland, the third largest population city in Australia. Brisbane is a
+    great city to live in. With amazing weather, bright open parks and amazing restaurants. The city is also known for
+    its galleries and top-ranking events.
+  </p>
+
+  <p>
+    <li>State: Queensland</li>
+    <li>Weather: 23 °C</li>
+    <li>Population: 2.28 million</li>
+    <li>Average living costs AUD300-450 per week</li>
+    <li>Employability: High</li>
+    <li>The number of schools: many possibilities and good prices.</li>
+    <li>Variety of courses: high.</li>
+    <li>Lifestyle: active cultural life, haute cuisine, several options of pubs, and restaurants. It is close to Gold
+      Coast the surfers paradise.</li>
+  </p>
+
+  <h4 class="subtitle">Gold Coast</h4>
+
+  <p>
+    Known for being the home for an amazing coastline, Gold Coast is a surfers paradise. Other than the most famous
+    beaches, the city offers theme parks, great places for shopping, young and vibrant nightlife. The region has 70
+    kilometres of coastline and rainforests, including great parks for daily activities.
+  </p>
+
+  <p>
+    <li>State: Queensland</li>
+    <li>Weather: 24 °C</li>
+    <li>Population: 687,460</li>
+    <li>Average living costs AUD350-450 per week</li>
+    <li>Employability: medium</li>
+    <li>The number of schools: few schools</li>
+    <li>Variety of courses: limited variety</li>
+    <li>Lifestyle: many options of bars and restaurants, beautiful beaches, considered a paradise for surfers.</li>
+  </p>
+
+  <h3 class="topic" id="topic3">What is the cost of living?</h3>
+
+  <p>
+    As a general guideline, the international student will spend an average of AUD $ 1,753 per month (approximately $404
+    per week) on accommodation, food, clothing, entertainment, transportation, and telephone.
+  </p>
+
+  <p>
+    The accommodation will be the main cost to live in here. There are some types of accommodation you can find in
+    Australia, and the cost and availability of accommodation depends on the type you choose, some examples:
+  </p>
+
+  <h4 class="subtitle">Single room</h4>
+
+  <p>Many students prefer to have their privacy and a more suitable space to study.</p>
+
+  <p>
+    <li>Cost
+      <p>
+        A single room for you in a shared house can cost between $250 to $400 per week. Obviously, it depends
+        on the location chosen. Typically, you will need to pay two week advance.
+      </p>
+    </li>
+    <li>Bills
+      <p>
+        Electricity, gas, and water bills are usually included. Most of the time, the INTERNET is also included.
+      </p>
+    </li>
+    <li>BONDE
+      <p>
+        Is a security payment required in the case of damaged goods; it will returns to you at the end of the
+        contract if nothing happened. They usually cost about 2 or 4 weeks of rent, which you will need to pay in
+        advance.
+      </p>
+    </li>
+  </p>
+
+  <h4 class="subtitle">Shared room</h4>
+
+  <p>
+    This is the option most chosen by international students. Firstly because it is more accessible and also because it
+    is a great opportunity to make friends and learn more about life in Australia. Often it is your flatmates who will
+    refer you to a job and/or help you with information.
+  </p>
+
+  <p>
+    <li>Cost
+      <p>
+        A room for two can cost between $180 to $250 per week, while a room for four is around $150 to $195.
+        Obviously, it depends on the location chosen. Usually, you will need to pay two week advance.
+      </p>
+    </li>
+    <li>Bills
+      <p>
+        Electricity, gas, and water bills are usually included. Most of the time, the INTERNET is also included.
+      </p>
+    </li>
+    <li>BONDE
+      <p>
+        Is a security payment required in the case of damaged goods; it will returns to you at the end of the contract
+        if nothing happened. They usually cost about 2 weeks of rent, which you will need to be paid in advance.
+      </p>
+    </li>
+  </p>
+
+  <h4 class="subtitle">Hostels and guesthouses</h4>
+
+  <p>
+    Many students use hostels and guesthouses as temporary accommodation. This accommodation, usually cost around
+    $200 to $325 per week.
+  </p>
+
+  <h4 class="subtitle">Homestay</h4>
+
+  <p>
+    Homestay accommodation gives international students the option of living with an Australian family in their home.
+    Single or shared rooms may be available, and costs vary according to the type of room (usually around AUD$235 to
+    $325 per week). Meals are usually included.
+  </p>
+
+  <h4 class="subtitle">Rent an apartment</h4>
+
+  <p>
+    Some people prefer rent a property by themselves or share the cost of a rental property with housemates. Rental
+    agreements usually require payment of rent in advance, as well as a security payment called a bonde (usually one
+    month's rent) that is paid up-front. You will also need to pay bills for electricity, gas and water. On average,
+    rental accommodation costs around AUD $400 to $800 per week depends on the location and number of rooms. It will
+    also requires you to provide some documents as :
+  </p>
+
+  <p>
+    <li>Reference letters</li>
+    <li>Proof of income (recent payslips, bank statements, tax return)</li>
+    <li>Letter of employment (if you’re starting a new job)</li>
+    <li>Valid ID (passport, driver’s licence)</li>
+    <li>Resume of your rental/employment history</li>
+    <li>Deposit/rental ledger (summary of your rental payment history)</li>
+    <li>Cover letter</li>
+    <li>Completed application form.</li>
+  </p>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="secondary" (click)="ScrollToTop()">
+      <ion-icon class="myIcon" name="arrow-up-circle-sharp"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
 </ion-content>

@@ -7,6 +7,227 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  3
+<ion-content class="ion-padding" [scrollEvents]="true" #content>
+
+  <p>
+    In this page you will find information about the following topics:
+  </p>
+
+  <ion-list>
+    <ion-item lines="none" (click)="scrollTo('topic1')">
+      <ion-icon class="iconTopics" name="information-circle-sharp" slot="start"></ion-icon>
+      <ion-label class="myLabel">What is a student visa?</ion-label>
+    </ion-item>
+    <ion-item lines="none" (click)="scrollTo('topic2')">
+      <ion-icon class="iconTopics" name="information-circle-sharp" slot="start"></ion-icon>
+      <ion-label class="myLabel">Why apply for a student visa?</ion-label>
+    </ion-item>
+    <ion-item lines="none" (click)="scrollTo('topic3')">
+      <ion-icon class="iconTopics" name="information-circle-sharp" slot="start"></ion-icon>
+      <ion-label class="myLabel">What to study?</ion-label>
+    </ion-item>
+    <ion-item lines="none" (click)="scrollTo('topic4')">
+      <ion-icon class="iconTopics" name="information-circle-sharp" slot="start"></ion-icon>
+      <ion-label class="myLabel">How much will it cost?</ion-label>
+    </ion-item>
+    <ion-item lines="none" (click)="scrollTo('topic5')">
+      <ion-icon class="iconTopics" name="information-circle-sharp" slot="start"></ion-icon>
+      <ion-label class="myLabel">What is the documents I need?</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <h2>Let’s us to help you to extend your experience in Australia.</h2>
+
+  <p>
+    If you come to Australia on other visa, such as vistor, work holiday you may will able to apply for your student
+    visa in Australia. The first step is to schedule a free consultation to learn everything about the student visa
+    based on your case. This means that we will review your profile and provide options based on your goals, budget, and
+    expectations.
+  </p>
+
+  <h3 class="topic" id="topic1">What is a student visa?</h3>
+
+  <p>
+    The Student visa (subclass 500) allows you to remain in Australia for the purpose of studying. You are also allow to
+    work part-time. The student must be enrolled with an Australian education provider with CRICOS registration.
+  </p>
+
+  <h3 class="topic" id="topic2">Why apply for a student visa?</h3>
+
+  <p>For tree reasons:</p>
+
+  <h4 class="subtitle">Study at globally ranked institutions</h4>
+
+  <p>
+    Australia offers a diverse range of study options for international students, such as English courses, vocational
+    education and training (VET) and technical and higher education (TAFE), as well as undergraduate (bachelor's) and
+    postgraduate programs. It will certainly be a differential to have an international course in one of the ranked
+    schools in your curriculum.
+  </p>
+
+  <h4 class="subtitle">Study and work</h4>
+
+  <p>
+    When you have a student visa, you are allowing to work 40 hours per fortnight (fortnight means 14 days starting on a
+    Monday) and more than 40 hours on your vacation. Most students pay their expenses (accommodation and food) by
+    working here. Often, they also make extra money to travel around Asia and Australia. Australia is full of job
+    opportunities in several areas.
+  </p>
+
+  <h4 class="subtitle">Amazing experience </h4>
+
+  <p>
+    You will expand your experience here and have more time to discover beautiful beaches and places, travel and have
+    fun with your friends. At the same time, studying and developing your career.
+  </p>
+
+  <h3 class="topic" id="topic3">What to study?</h3>
+
+  <p>
+    You probably already have some idea of what you would like to study. But there are a number of courses and schools
+    for you to know a little more before making your decision.
+  </p>
+
+  <p>
+    Check it out on the website:
+    <a href="https://cricos.education.gov.au/Course/CourseSearch.aspx">
+      https://cricos.education.gov.au/Course/CourseSearch.aspx</a>
+  </p>
+
+  <p>
+    Choose the state you want to study, the name and type of course and click on "start search". When you see the course
+    that interests you click on it to open the details: school information, course time and price. See how simple it is.
+    Sometimes the site is not updated when schools offer promotional prices. The best way is to schedule a free
+    consultation with our team.
+  </p>
+
+  <h3 class="topic" id="topic4">How much will it cost?</h3>
+
+  <p>
+    Stay Global does not charge any fees for consulting and applying for your visa. This would cost the same price as if
+    you applied it yourself. The difference is that with us you have more security in the process and our counselor will
+    present you with several options for schools that suit your needs. There will be four fees in your quote.
+  </p>
+
+  <h4 class="subtitle">Visa application fee</h4>
+
+  <p>This is the fee that we need to pay to immigration to apply for a visa.</p>
+
+  <p>
+    <li>Single: AUD620</li>
+    <li>Couple: AUD1080</li>
+    <li>Family: AUD1080 + AUD 150 per dependent applicant (under 18)</li>
+    <li>Extra fee: AUD700, this additional fee will be paid on and after your third order.</li>
+  </p>
+
+  <p>
+    Check the information, on Immigration website.
+    <a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/fees-and-charges/current-visa-pricing/study">
+      https://immi.homeaffairs.gov.au/visas/getting-a-visa/fees-and-charges/current-visa-pricing/study</a>
+  </p>
+
+  <h4 class="subtitle">School fee</h4>
+
+  <p>You usually need to pay for the first 3 months of the course + enroll + material fee, but each school has its own
+    policy.</p>
+
+  <p>
+    <li>English courses: each week of the course is around AUD300, although it should be noted that the longer the
+      course, the cheaper it can be.</li>
+    <li>VET Professional Courses: Three months can cost you approximately AUD1,500.</li>
+    <li>TAFE professional courses: whose full price is estimated between AUD8,000 and AUD 22,000.</li>
+    <li>University degree (between AUD36,000 and $ 58,000 the full course), master's degree (between AUD33,000 and $
+      58,000) or doctorate (between $ 45,000 and $ 60,000 the full course).</li>
+  </p>
+
+  <h4 class="subtitle">OSHC</h4>
+
+  <p>
+    Student health coverage abroad is a mandatory health insurance product required by international students studying
+    in Australia. The cost is calculated based on the length of your stay. There are some companies that offer the OSHC,
+    ask a quote to know the better price to your case. See an example, based on 12 months visa:
+  </p>
+
+  <p>
+    <li>Single: AUD479</li>
+    <li>Couple: AUD2,120</li>
+    <li>Family: AUD3,091</li>
+  </p>
+
+  <h4 class="subtitle">Medical Examination</h4>
+
+  <p>
+    Immigration requires you to do a health check before granting your visa. This exam is valid for one year. Below is a
+    base price, but this amount may vary depending on the local exam and immigration request.
+  </p>
+
+  <p>
+    <li>Single: AUD321.20</li>
+    <li>Couple: AUD642,4</li>
+    <li>Family: AUD642,4 + AUD232.40</li>
+  </p>
+
+  <h3 class="topic" id="topic5">What is the documents I need?</h3>
+
+  <p>
+    Australia's application is a little simpler than offshore. Remember that we are here to assist you and that applying
+    for a visa with us will cost you the same amount as doing it yourself. Come and talk to us, without any commitment
+    so that you have a specialized assistance with an experienced team.
+  </p>
+
+  <p>Here are the standard documents needed:</p>
+
+  <p>
+    <li>Valid Passport</li>
+    <li>Document of the last complete degree in your country</li>
+    <li>Certificate of courses taken in Australia</li>
+    <li>English Language Proficiency proof (if it is the case)</li>
+    <li>Confirmation of Enrolment (CoE)</li>
+    <li>OSHC: Overseas Student Health Cover, health insurance for the proposed duration of your visa see student visa
+      grant periods. Health insurance must be Overseas Student Health Cover (OSHC) covering everyone included in your
+      application.</li>
+    <li>Certificate Evidence you have enough money for your stay: If the document checklist indicates you must provide
+      evidence of your financial capacity, attach the evidence to your visa application. Please check with our counselor
+      for more information according to your country level.</li>
+    <li>Genuine temporary entrant documents: Every Student visa applicant must provide evidence they are a genuine
+      temporary entrant (GTE). This is your letter of intent.</li>
+    <li>The application questionnaire completed.</li>
+  </p>
+
+  <p>
+    If you ar applying as couple, you also should povide:
+    <li>Marriage Certificate (or relationship certificate about 1 year)</li>
+    <li>Identity documents for each</li>
+    <li>OSHC Couple</li>
+  </p>
+
+  <p>
+    If it s the first time you are applying as couple, you also need to provide:
+    <li>Documents as relationship evidence (joint account, lease agreement, letter from witnesses - Australian Citizens,
+      bills at the same address (bank account same address), photos);</li>
+    <li>Immigration form 919;</li>
+  </p>
+
+  <p>
+    If you are apllying as FAMILY, you also need to provide:
+    <li>Identity documents for each: passport and copies of birth certificates or the family book showing the names of
+      both parents of all your dependent children. Copies of the adoption paper, if applicable. </li>
+    <li>Form 1229 Consent form to grant an Australian visa to a child under the age of 18 years (168KB PDF)</li>
+    <li>Evidence of school enrolment: you must give the evidence of education for any dependant child who has turned 5,
+      but has not turned 18 years.</li>
+    <li>OSHC Family</li>
+  </p>
+
+  <p>
+    You may need to provide more documents. Book a free consultation with us or check all the documentation on the
+    Immigration website <a href="https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500#HowTo">
+      https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500#HowTo</a>
+  </p>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="secondary" (click)="ScrollToTop()">
+      <ion-icon class="myIcon" name="arrow-up-circle-sharp"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
 </ion-content>

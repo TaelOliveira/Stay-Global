@@ -8,3 +8,29 @@ ion-header {
         }
     }
 }
+
+.myLabel {
+    text-decoration: underline;
+    color: var(--ion-color-primary);
+}
+
+li {
+    margin-left: 20px;
+}
+
+.myIcon {
+    font-size: 32px;
+}
+
+.iconTopics {
+    color: var(--ion-color-primary);
+}
+
+.subtitle {
+    margin-left: 10px;
+}
+
+.topic {
+    text-decoration: underline;
+    color: var(--ion-color-primary);
+}

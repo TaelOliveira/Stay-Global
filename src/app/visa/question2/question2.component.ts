@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ModalController, IonContent } from '@ionic/angular';
 
 @Component({
   selector: 'app-question2',
@@ -7,6 +7,8 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./question2.component.scss'],
 })
 export class Question2Component implements OnInit {
+
+  @ViewChild('content', { static: true }) private content: IonContent;
 
   constructor(
     public modal: ModalController,
@@ -18,6 +20,15 @@ export class Question2Component implements OnInit {
     this.modal.dismiss({
       'dismissed': true
     });
+  }
+
+  ScrollToTop() {
+    this.content.scrollToTop()
+  }
+
+  scrollTo(elementId) {
+    var y = document.getElementById(elementId).offsetTop;
+    this.content.scrollToPoint(0, y, 1000);
   }
 
 }
