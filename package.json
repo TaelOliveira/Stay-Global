@@ -39,7 +39,7 @@
     "cordova-plugin-video-player": "git+https://github.com/moust/cordova-plugin-videoplayer.git",
     "core-js": "^2.5.4",
     "firebase": "^7.14.4",
-    "moment": "^2.25.3",
+    "moment": "^2.29.4",
     "rxjs": "~6.5.1",
     "tslib": "^1.13.0",
     "zone.js": "~0.9.1"
